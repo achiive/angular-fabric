@@ -124,7 +124,7 @@ angular.module('common.fabric', [
             self.renderCount = 0;
             self.render = function() {
                 var objects = canvas.getObjects();
-                for (var i in objects) {
+                for (var i = 0; i < objects.length; i++) {
                     objects[i].setCoords();
                 }
 
@@ -593,7 +593,7 @@ angular.module('common.fabric', [
 
             self.setZoom = function() {
                 var objects = canvas.getObjects();
-                for (var i in objects) {
+                for (var i = 0; i < objects.length; i++) {
                     objects[i].originalScaleX = objects[i].originalScaleX ?
                         objects[i].originalScaleX :
                         objects[i].scaleX;
