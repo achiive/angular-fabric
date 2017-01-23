@@ -344,8 +344,8 @@ angular.module('common.fabric', [
                 return getActiveStyle('lineHeight', object);
             };
 
-            self.setLineHeight = function(value) {
-                setActiveStyle('lineHeight', parseFloat(value, 10), object);
+            self.setLineHeight = function(value, object) {
+                setActiveStyle('lineHeight', parseFloat(value), object);
                 self.render();
             };
 
