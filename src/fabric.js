@@ -565,7 +565,7 @@ angular.module('common.fabric', [
             self.setFill = function(value, object) {
                 object = object || canvas.getActiveObject();
                 if (object) {
-                    if (object.type === 'text') {
+                    if (object.type === 'text' || object.type === 'i-text' || object.type === 'textbox') {
                         setActiveStyle('fill', value, object);
                     } else {
                         self.setFillPath(object, value);
@@ -755,9 +755,14 @@ angular.module('common.fabric', [
                 return json;
             };
 
-            self.loadJSON = function(json) {
+            self.loadJSON = function(json, callback) {
                 self.setLoading(true);
                 canvas.loadFromJSON(json, function() {
+
+                    if (callback) {
+                        callback();
+                    }
+
                     $timeout(function() {
                         self.setLoading(false);
 

@@ -82,7 +82,7 @@ function DirectiveController($scope, $timeout, $element, FabricCanvas) {
 		});
 
 		$scope.$watch('fabric.selectedObject.fill', function(newVal) {
-			if (typeof newVal === 'string') {
+			if (typeof newVal === 'string' && (newVal !== "")) {
 				$scope.fabric.setFill(newVal);
 				$scope.fabric.render();
 			}
