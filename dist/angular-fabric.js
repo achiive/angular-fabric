@@ -28,7 +28,7 @@ angular.module('common.fabric', [
                 dirty: false,
                 initialized: false,
                 userHasClickedCanvas: false,
-                downloadMultipler: 2,
+                downloadMultiplier: 2,
                 imageDefaults: {},
                 textDefaults: {},
                 shapeDefaults: {},
@@ -72,6 +72,8 @@ angular.module('common.fabric', [
                 } else {
                     object[styleName] = value;
                 }
+
+                object.dirty = true;
 
                 self.render();
             }
@@ -571,6 +573,7 @@ angular.module('common.fabric', [
                         self.setFillPath(object, value);
                     }
                 }
+                self.render();
             };
 
             self.setFillPath = function(object, value) {
@@ -581,6 +584,7 @@ angular.module('common.fabric', [
                         object.paths[i].setFill(value);
                     }
                 }
+                self.render();
             };
 
             //
@@ -782,7 +786,7 @@ angular.module('common.fabric', [
                 var data = canvas.toDataURL({
                     width: canvas.getWidth(),
                     height: canvas.getHeight(),
-                    multiplier: self.downloadMultipler
+                    multiplier: self.downloadMultiplier
                 });
 
                 return data;
